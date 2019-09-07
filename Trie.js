@@ -31,3 +31,5 @@ class Trie {
     return isNewWord;
   }
 }
+
+26 ^ 5
