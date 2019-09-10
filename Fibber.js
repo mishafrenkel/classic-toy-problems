@@ -9,15 +9,16 @@ class Fibber {
       return n;
     }
     if (this.memo.hasOwnProperty(n)) {
-      return this.memo(n);
+      return this.memo[n];
     }
     const result = this.fib(n - 1) + this.fib(n - 2);
+    this.memo[n] = result;
     return result;
   }
 }
 
-const fib = new Fibber();
-console.log(fib.fib(10));
+// const fib = new Fibber();
+// console.log(fib.fib(10));
 
 
 // Bottom up Solution
@@ -33,4 +34,14 @@ console.log(fib.fib(10));
 //     prevPrev = prev;
 //     prev = current;
 //   }
+// };
+
+// Another create solution:
+// const nthFib = (n) => {
+//   let fibs = [0, 1];
+
+//   for (; n > 0; n--) {
+//     fibs.push(fibs.shift() + fibs[0]);
+//   }
+//   return fibs[n];
 // };
