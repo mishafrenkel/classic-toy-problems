@@ -1,8 +1,25 @@
+class Tree {
+  constructor(value) {
+    this.value = value;
+    this.children = [];
+  }
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  map(callback) {
+    const output = new Tree(callback(this.value));
 
-console.time('shuffle');
-for (let i = 0; i < arr.length; i++) {
-  console.log(shuffle(arr));
+    for (let i = 0; i < this.children.length; i++) {
+      output.addChild(this.children[i].map(callback));
+    }
+    return output;
+  };
+
+  mapInPlace = (callback) => {
+    this.value = callback(this.value);
+
+    for (let i = 0; i < this.children.length; i++) {
+      this.children[i].mapInPlace(callback);
+    }
+  };
+
+  
 }
-console.timeEnd('shuffle');

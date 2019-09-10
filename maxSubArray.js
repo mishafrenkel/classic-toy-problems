@@ -13,7 +13,8 @@ function maxSumArr(arr) {
   return count;
 }
 
-
 const assert = require('assert');
 
 assert.equal(maxSumArr([1, 2, 3, -1, 8]), 13, console.log('success'));
+
+console.log(maxSumArr([1, -1, 2, 3, 8]));
